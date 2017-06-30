@@ -161,39 +161,46 @@ Here are eight German traffic signs that I found on the web:
 ![alt text](downloaded_images/image4.jpeg) ![alt text](downloaded_images/image5.jpeg) ![alt text](downloaded_images/image6.jpeg) 
 ![alt text](downloaded_images/image7.jpeg) ![alt text](downloaded_images/image8.jpeg)
 
-The first image might be difficult to classify because ...
+Here are the resized and pre-processed versions>
+![alt text](saved_images/tests.png)
+
+The main challenges in classification are noises in the image and angles/distances at which they are taken.
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 Here are the results of the prediction:
 
-| Image			        |     Prediction	        					| 
+| Image			        |     Prediction	        	| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| 30 km/h      		| 30 km/h   				        | 
+| Stop sign     	| Stop Sign 					|
+| Caution		| Caution					|
+| Keep Right	      	| Keep Right					|
+| Priority Road		| Priority Road      				|
+| Turn Right Ahead      | Turn Right Ahead                              |
+| Bumpy Road            | Bicycles crossing                             |
+| Right of way ahead    | Right of way ahead                            |
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess all the traffic signs, which gives an accuracy of 87.5%. 
+This compares favorably to the accuracy on the test set of 96%.
 
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+####3. Describe how certain the model is when predicting on each of the new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+All the images except image 7 (Bumpy Road) were successfully classified to their respective labels with softmax probabilities of 100%.
+For the ‘Bumpy Road’ image, the top five soft max probabilities were
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
-
-| Probability         	|     Prediction	        					| 
+| Probability         	|     Prediction	        		| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| .47         		| Bicycle crossing   				| 
+| .44     		| Bumpy Road 			                |
+| .07			| Slippery Road					|
+| .02	      		| Road Work					|
+| .01			| Dangerous curve to the right     		|
 
 
-For the second image ... 
+The following image visualizes the soft max probabilities for all images
+![alt text](saved_images/softmax.png)
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 ####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
