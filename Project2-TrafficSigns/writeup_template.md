@@ -187,7 +187,7 @@ Here are the results of the prediction:
 | Right of way ahead    | Right of way ahead                            |
 
 
-The model was able to correctly guess all the traffic signs, which gives an accuracy of 87.5%. 
+The model was able to correctly guess all but one of the traffic signs, which gives an accuracy of 87.5%. 
 This compares favorably to the accuracy on the test set of 96%.
 
 ####3. Describe how certain the model is when predicting on each of the new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
