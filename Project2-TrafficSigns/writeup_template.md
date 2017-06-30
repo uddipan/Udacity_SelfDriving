@@ -51,7 +51,11 @@ https://github.com/uddipan/Udacity_SelfDriving/tree/master/Project2-TrafficSigns
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
 
+<<<<<<< HEAD
 ![alt text][/saved_images/hist.png]
+=======
+![alt text][saved_images/hist.png]
+>>>>>>> 68d1190478425eb1bd6348600c68c8bb67536e50
 
 ###Design and Test a Model Architecture
 
