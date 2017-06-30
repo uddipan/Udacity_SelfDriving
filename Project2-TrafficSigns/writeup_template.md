@@ -113,9 +113,16 @@ My final model consisted of the following layers:
 
 ####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used an ....
+To train the model, I used an approach similar to Lenet. I used an AdamOptimizer, a batch size of 128 (would have tried 256 if the validation accuracy was low), 20 Epochs and a learning rate of 0.001. For the training model convolution layers, I used a mean of 0, and standard deviation of 0.1.
 
 ####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+
+- I started off by a simple plug and play of the Lenet architecture discussed in class. I used color images at first and obtained a validation accuracy of about 88%. 
+- Next I augmented the dataset with translated and rotated images and used the same architecture to get an accuracy of 90%.
+- I tried gray scaling and pre processing the dataset as described above and that increased my accuracy to 94%
+- Next I tried dropout in the original Lenet architecture just before the final activation and that increased the accuracy further to 95%
+- Finally I decided to try the famous architecture from Sermanet and LeCun paper and that further increased my validation accuracy to almost 98% with 20 epochs. The final two architectures are documented in the jupyter notebook.
+
 
 My final model results were:
 * training set accuracy of ?
