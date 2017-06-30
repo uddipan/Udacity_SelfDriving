@@ -50,10 +50,12 @@ https://github.com/uddipan/Udacity_SelfDriving/tree/master/Project2-TrafficSigns
 ####2. Include an exploratory visualization of the dataset.
 
 Here are 10 random images from the dataset.
+
 ![alt text](saved_images/before.png)
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how the
 data is classified into different labels.
+
 ![alt text](saved_images/hist.png)
 
 
@@ -69,7 +71,7 @@ and avoids heavily skewing a particular subrange.
 
 Here is an example of 10 random traffic sign images after grayscaling and center-normalizing
 
-![alt text][saved_images/preprocess.png]
+![alt text](saved_images/preprocess.png)
 
 
 I decided to generate additional data because ... 
