@@ -49,7 +49,8 @@ https://github.com/uddipan/Udacity_SelfDriving/tree/master/Project2-TrafficSigns
 
 ####2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. It is a bar chart showing how the
+data is classified into different labels.
 
 ![alt text](saved_images/hist.png)
 
