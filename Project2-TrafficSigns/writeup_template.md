@@ -121,35 +121,45 @@ To train the model, I used an approach similar to Lenet. I used an AdamOptimizer
 - Next I augmented the dataset with translated and rotated images and used the same architecture to get an accuracy of 90%.
 - I tried gray scaling and pre processing the dataset as described above and that increased my accuracy to 94%
 - Next I tried dropout in the original Lenet architecture just before the final activation and that increased the accuracy further to 95%
-- Finally I decided to try the famous architecture from Sermanet and LeCun paper and that further increased my validation accuracy to almost 98% with 20 epochs. The final two architectures are documented in the jupyter notebook.
+- Finally I decided to try the famous architecture from Sermanet and LeCun paper and that further increased my validation accuracy to almost 97.6% with 20 epochs. The final two architectures are documented in the jupyter notebook.
 
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* training set accuracy of 99.9%
+* validation set accuracy of 97.4%
+* test set accuracy of 96.0%
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+ - The first architecture was a simple Lenet plug and play. It was chosen because it is a fast way of validating the correctness of the code and it gave me a basic idea which parts of the entire design can be altered for better accuracy.
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
- 
+* What were some problems with the initial architecture?
+- First and foremost, desired level of accuracy was not achieved. 
+- The data was more complex than Lenet and without pre-processing/augmentation accuracy was poor.
+
+* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+- Architecture was adjusted first by replacing the max pool by average pool. That boosted the accuracy quite a bit.
+- Next I tried dropout before the final activation layer
+- Finally I settled upon the LeCun and Sermanet architecture with skip layers that gave me a validation accuracy of about 97.6%
+
+* Which parameters were tuned? How were they adjusted and why?
+- I replaced max pool by average pool
+- In the final architecture a dropout with keep probability of 0.5 was used and only one final activation layer was used. The dropout proved to be significantly helpful.
+
+* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+- Convolution will work well as we are dealing with small image subsets and that helps us better identifying local similarities.
+- Dropout keep probability of 0.5 helps from overfitting.
+
 
 ###Test a Model on New Images
 
 ####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-Here are five German traffic signs that I found on the web:
+Here are eight German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text][saved_images/image1.jpeg] ![alt text][saved_images/image2.jpeg] ![alt text][saved_images/image3.jpeg] 
+![alt text][saved_images/image4.jpeg] ![alt text][saved_images/image5.jpeg] ![alt text][saved_images/image6.jpeg] 
+![alt text][saved_images/image7.jpeg] ![alt text][saved_images/image8.jpeg]
 
 The first image might be difficult to classify because ...
 
