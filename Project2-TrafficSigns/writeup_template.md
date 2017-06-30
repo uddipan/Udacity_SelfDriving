@@ -74,9 +74,18 @@ Here is an example of 10 random traffic sign images after grayscaling and center
 ![alt text](saved_images/preprocess.png)
 
 
-I decided to generate additional data because ... 
+I decided to generate additional data because increasing the dataset size increases the training accuracy more often than not. This is logical because data augmentation adds more data to classes having fewer elements (i.e. if data pertaining to a particular label is really low, augmentation helps increasing the size of data for that label). 
 
-To add more data to the the data set, I used the following techniques because ... 
+To add more data to the the data set, I used the following techniques:
+1. Rotation : Applied rotations of 7.5 degrees and -7.5 degrees to each original image and created 2x data. The rationale is that images are not always taken at a straight angle and slight rotations of the camera will boost data prediction.
+2. Translation: Applied translations of 3 pixels on each of x and y directions to generate 2x data. The rationale is same as rotation.
+3. Shear: Applied a random shear to each image to generate 1x data. Shear simulates tilt/yaw/pitch of the camera taking the image
+4. Blur: Applied gaussian blur to each image to eliminate the effect of noise. This generated an addition 1x data.
+
+After the pre processing I ended up with 7x original data. The augmented data set is then shuffled to avoid localization of similar labels. Here is an example of 10 random images taken from the augmented dataset.
+ 
+![alt text](saved_images/augmented.png)
+
 
 Here is an example of an original image and an augmented image:
 
