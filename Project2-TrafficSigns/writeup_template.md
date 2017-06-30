@@ -161,7 +161,7 @@ Here are eight German traffic signs that I found on the web:
 ![alt text](downloaded_images/image4.jpeg) ![alt text](downloaded_images/image5.jpeg) ![alt text](downloaded_images/image6.jpeg) 
 ![alt text](downloaded_images/image7.jpeg) ![alt text](downloaded_images/image8.jpeg)
 
-Here are the resized and pre-processed versions>
+Here are the resized and pre-processed versions :
 ![alt text](saved_images/tests.png)
 
 The main challenges in classification are noises in the image and angles/distances at which they are taken.
@@ -201,8 +201,4 @@ For the ‘Bumpy Road’ image, the top five soft max probabilities were
 
 The following image visualizes the soft max probabilities for all images
 ![alt text](saved_images/softmax.png)
-
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
-
 
