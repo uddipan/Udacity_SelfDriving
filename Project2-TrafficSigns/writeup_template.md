@@ -157,9 +157,9 @@ If an iterative approach was chosen:
 
 Here are eight German traffic signs that I found on the web:
 
-![alt text][downloaded_images/image1.jpeg] ![alt text][downloaded_images/image2.jpeg] ![alt text][downloaded_images/image3.jpeg] 
-![alt text][downloaded_images/image4.jpeg] ![alt text][downloaded_images/image5.jpeg] ![alt text][downloaded_images/image6.jpeg] 
-![alt text][downloaded_images/image7.jpeg] ![alt text][downloaded_images/image8.jpeg]
+![alt text](downloaded_images/image1.jpeg) ![alt text](downloaded_images/image2.jpeg) ![alt text](downloaded_images/image3.jpeg)
+![alt text](downloaded_images/image4.jpeg) ![alt text](downloaded_images/image5.jpeg) ![alt text](downloaded_images/image6.jpeg) 
+![alt text](downloaded_images/image7.jpeg) ![alt text](downloaded_images/image8.jpeg)
 
 The first image might be difficult to classify because ...
 
