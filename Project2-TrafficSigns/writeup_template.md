@@ -131,24 +131,29 @@ My final model results were:
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
- - The first architecture was a simple Lenet plug and play. It was chosen because it is a fast way of validating the correctness of the code and it gave me a basic idea which parts of the entire design can be altered for better accuracy.
+
+The first architecture was a simple Lenet plug and play. It was chosen because it is a fast way of validating the correctness of the code and it gave me a basic idea which parts of the entire design can be altered for better accuracy.
 
 * What were some problems with the initial architecture?
-- First and foremost, desired level of accuracy was not achieved. 
-- The data was more complex than Lenet and without pre-processing/augmentation accuracy was poor.
+
+First and foremost, desired level of accuracy was not achieved. 
+The data was more complex than Lenet and without pre-processing/augmentation accuracy was poor.
 
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-- Architecture was adjusted first by replacing the max pool by average pool. That boosted the accuracy quite a bit.
-- Next I tried dropout before the final activation layer
-- Finally I settled upon the LeCun and Sermanet architecture with skip layers that gave me a validation accuracy of about 97.6%
+
+Architecture was adjusted first by replacing the max pool by average pool. That boosted the accuracy quite a bit.
+Next I tried dropout before the final activation layer
+Finally I settled upon the LeCun and Sermanet architecture with skip layers that gave me a validation accuracy of about 97.6%
 
 * Which parameters were tuned? How were they adjusted and why?
-- I replaced max pool by average pool
-- In the final architecture a dropout with keep probability of 0.5 was used and only one final activation layer was used. The dropout proved to be significantly helpful.
+
+I replaced max pool by average pool
+In the final architecture a dropout with keep probability of 0.5 was used and only one final activation layer was used. The dropout proved to be significantly helpful.
 
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
-- Convolution will work well as we are dealing with small image subsets and that helps us better identifying local similarities.
-- Dropout keep probability of 0.5 helps from overfitting.
+
+Convolution will work well as we are dealing with small image subsets and that helps us better identifying local similarities.
+Dropout keep probability of 0.5 helps from overfitting.
 
 
 ###Test a Model on New Images
