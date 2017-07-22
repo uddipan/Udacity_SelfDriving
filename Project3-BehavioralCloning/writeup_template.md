@@ -58,7 +58,7 @@ My model is the nvidia model introduced in class used as is.
 
 ####2. Attempts to reduce overfitting in the model
 
-The model was trained and validated on different collected data sets to ensure that the model was not overfitting (code line 10-16). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
+The model was trained and validated on different collected data sets to ensure that the model was not overfitting. The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
 ####3. Model parameter tuning
 
