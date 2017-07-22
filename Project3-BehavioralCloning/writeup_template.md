@@ -94,8 +94,10 @@ Here are some example images of my dataset
 
 
 
-Here are some examples of data that I augmented
-
+Here are some examples of data that I augmented at sharp turnings with slight rotation added
+![alt text](t1.jpg)
+![alt text](t2.jpg)
+![alt text](t3.jpg)
 
 I finally randomly shuffled the data set and put 5% of the data into a validation set. 
 
