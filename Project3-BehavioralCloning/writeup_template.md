@@ -99,6 +99,11 @@ Here are some examples of data that I augmented at sharp turnings with slight ro
 ![alt text](t2.jpg)
 ![alt text](t3.jpg)
 
+The main motivation was that at turning angles data was sparse and the distribution of turning 
+angles were not even. So adding more data at sharp angles helps in training. I added a slight rotation
+to each image at sharp turning angles, to augment the data. This helps simulate the turning better
+and the intuition can be related to hilly conditions.
+
 I finally randomly shuffled the data set and put 5% of the data into a validation set. 
 
 I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 5 as evidenced by the loss curves. I used an adam optimizer so that manually training the learning rate wasn't necessary.
