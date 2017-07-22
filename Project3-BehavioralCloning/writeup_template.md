@@ -79,7 +79,13 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 ####2. Final Model Architecture
 
-The final model architecture is the nvidia architecture.  				
+The final model architecture is the nvidia architecture.  	
+Here are the details for each layer of the model used:
+I started with a normalization and cropping layer for batch normalization.
+Then I followed nvidi's architecture of a bunch of convolution layers (details below)
+and then followed by dense layers introducing a dropout layer as shown below:
+
+![alt text](arch.png)
 
 ####3. Creation of the Training Set & Training Process
 I mainly collected data from the primary track especially at turning angles.
@@ -98,6 +104,11 @@ Here are some examples of data that I augmented at sharp turnings with slight ro
 ![alt text](t1.jpg)
 ![alt text](t2.jpg)
 ![alt text](t3.jpg)
+
+The main motivation was that at turning angles data was sparse and the distribution of turning 
+angles were not even. So adding more data at sharp angles helps in training. I added a slight rotation
+to each image at sharp turning angles, to augment the data. This helps simulate the turning better
+and the intuition can be related to hilly conditions.
 
 I finally randomly shuffled the data set and put 5% of the data into a validation set. 
 
