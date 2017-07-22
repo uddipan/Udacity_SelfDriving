@@ -86,6 +86,12 @@ I mainly collected data from the primary track especially at turning angles.
 
 After the collection process, I had 10K number of data points. I then preprocessed this data by adding more turning angle data, finally having around 60K data points.
 
+Here are some example images of my dataset
+![alt text](data/IMG/center_2016_12_01_13_31_13_177.jpg)
+
+
+Here are some examples of data that I augmented
+
 
 I finally randomly shuffled the data set and put 5% of the data into a validation set. 
 
