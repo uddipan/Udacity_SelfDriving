@@ -33,7 +33,7 @@ with open('data/driving_log.csv') as csvfile:
 # In[3]:
 
 
-# Rotation
+# Rotation: Adds a random 
 def rotate(image, angle):
     rows,cols,depth = image.shape
     M = cv2.getRotationMatrix2D((cols/2, rows/2), angle, 1)
@@ -42,26 +42,18 @@ def rotate(image, angle):
                             borderMode = cv2.BORDER_REPLICATE)
     return rotated
 
-def shear(image):
-    rows,cols,depth = image.shape
-    M = np.float32([[1,0.2,0],[0.2,1,0]])
-    sheared = cv2.warpAffine(image, M, (cols,rows), 
-                            flags = cv2.INTER_LINEAR,
-                            borderMode = cv2.BORDER_REPLICATE)
-    return sheared
-
 
 # In[4]:
 
 
 # Load images
+# Sample generator to load image files
 def generate(samples, batch_size = 32):
     images_ = []
     measures_ = []
     num_samples = len(samples)
 
     while 1:
-        shuffle(samples)
         batch_counter = 0
         for batch in range(0, num_samples, batch_size):
             batch_samples = samples[batch: batch + batch_size]
@@ -73,6 +65,7 @@ def generate(samples, batch_size = 32):
                 for i in range(3):
                     image_path = line[i]
                     filename = image_path.split('/')[-1]
+                    # only deal with images ending in jpg
                     if filename.endswith('.jpg'):
                         current_path = 'data/IMG/' + filename
                         image = cv2.imread(current_path)
@@ -82,6 +75,8 @@ def generate(samples, batch_size = 32):
                         measures_.append(measure)
                         images_.append(cv2.flip(image,1))
                         measures_.append(measure*-1.0)
+                        # add more images if greater than threshold
+                        # as distribution is not even
                         if(abs(raw_measure) > 0.14):
                             images_.append(rotate(image,0.5))
                             images_.append(rotate(image,-0.5))
@@ -116,29 +111,41 @@ plt.figure(figsize=(5,5))
 plt.imshow(np.array(see_test[10]), cmap = "gray")
 
 
-# In[ ]:
+# In[12]:
 
 
 # Build model
 from keras.models import Sequential, Model
-from keras.layers import Flatten, Dense, Lambda, Cropping2D, Convolution2D
+from keras.layers import Flatten, Dense, Lambda, Cropping2D, Convolution2D, Dropout
+
+# This is the nvidia architecture with minor variation
 
 model = Sequential()
+
+# Add batch normalizations to avoid over fitting
 model.add(Lambda(lambda x: (x / 255.0) - 0.5, input_shape=(160,320,3)))
+
+# Add cropping to crop off top and bottom portions of each image
 model.add(Cropping2D(cropping=((70,25), (0,0))))
 
+# Add convolutions
 model.add(Convolution2D(24,5,5,subsample=(2,2),activation="relu"))
 model.add(Convolution2D(36,5,5,subsample=(2,2),activation="relu"))
 model.add(Convolution2D(48,5,5,subsample=(2,2),activation="relu"))
 model.add(Convolution2D(64,3,3,activation="relu"))
 model.add(Convolution2D(64,3,3,activation="relu"))
 
+# Add final flatten and dense layers
 model.add(Flatten())
 model.add(Dense(100))
+
+# Add dropout 
+model.add(Dropout(0.2, noise_shape=None, seed=None))
 model.add(Dense(50))
 model.add(Dense(10))
 model.add(Dense(1))
 
+# Print a summary of the model
 model.summary()
 
 model.compile(loss='mse',optimizer='adam')
@@ -147,6 +154,7 @@ batch_size = 32
 num_batches_train = batch_size*(int(len(train_samples)/batch_size))
 num_batches_validation = batch_size*(int(len(validation_samples)/batch_size))
 
+# Fit the model by invoking the generator
 history_object = model.fit_generator(
     generate(train_samples),
     samples_per_epoch = 19200,
@@ -156,11 +164,12 @@ history_object = model.fit_generator(
     nb_val_samples = 256
     )
 
-model.save('model_07_21_4_52.h5')
+# Save Model
+model.save('model_07_21_7_04.h5')
 print("Model Saved")
 
 
-# In[ ]:
+# In[27]:
 
 
 ### plot the training and validation loss for each epoch
