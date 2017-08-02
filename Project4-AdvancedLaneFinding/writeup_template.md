@@ -120,4 +120,8 @@ Here's a link to my video (named project_output_video.mp4):
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+The main challenge I faced was with shadows of trees on the road which hampered in thresholding. I had to use a special shadow thresholding to get rid of that. 
+
+I also used morphological closing operation to get better line pixel values and closing small holes which seemed to help. 
+
+The pipeline will most likely fail in roads which are brightly lit and near white in color maing it difficult to obtain lane lines. Another possible failure scenario is night time driving wherein I need different thresholding strategies to isolate lane lines. Even more curved lanes (e.g. more than 40 degrees) will most likely fail with a second degree polynomial fit wherein a higher order polynomial might help.
