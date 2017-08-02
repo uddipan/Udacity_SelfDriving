@@ -88,27 +88,28 @@ Here is an example of a transformed binary test image.
 
 ![alt text](output_images/wr_img4.png)
 
-#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+#### 4. Identifying lane line pixels (Cell 9)
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+I did the following:
+a. I took a histogram of the bottom portion of the warped binary image :
+```python
+histogram = np.sum(binary_warped[250:,:], axis=0
+```
+b. I used the left and right halves of the histogram to determine the starting point of the lanes and followed a sliding window protocol to detect lane pixels and eventually fit a second order polynomial using numpy polyfit.
 
-![alt text][image5]
+![alt text](output_images/wr_img5.png)
 
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
+#### 5. Calculation radius of curvature (Cell 10)
 
-I did this in lines # through # in my code in `my_other_file.py`
+The radius of curvature was calculated using the left and right lane lines as described in lectures, then converted to meters. Each image and video frame displays the radius of curvature for both the lane lines. Note that the radius is huge for near straight lines. Each frame also displays the car position from lane center.
 
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+#### 6. Here is an example image of my result plotted back down onto the road such that the lane area is identified clearly (Cell 11).
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
-
-![alt text][image6]
+![alt text](output_images/wr_img6.png)
 
 ---
 
 ### Pipeline (video)
-
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
 Here's a [link to my video result](./project_video.mp4)
 
