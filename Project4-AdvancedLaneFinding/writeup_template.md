@@ -111,7 +111,8 @@ The radius of curvature was calculated using the left and right lane lines as de
 
 ### Pipeline (video)
 
-Here's a [link to my video result](./project_video.mp4)
+Here's a link to my video (named project_output_video.mp4):
+[https://github.com/uddipan/Udacity_SelfDriving/blob/master/Project4-AdvancedLaneFinding/project_output_video.mp4](./project_output_video.mp4)
 
 ---
 
