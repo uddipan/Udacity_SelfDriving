@@ -23,9 +23,10 @@ The goals / steps of this project are the following:
 ####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Vehicle-Detection/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
 
 ### List of files
-1. detection.ipynb - main file constructing the pipeline. Includes sample image of cars/non-cars visualization, sample HOF feature detection and visualization, feature extraction, train classifier, finally detect cars on sample images and test video.
-2. utils.py - contains library functions for various operations like image visualization, HOG features extraction, heat map generation, etc. (mostly library functions provided in the course)
-3. project_output_video_test_full.mp4 - final video with cars detected
+1. detection.ipynb - main file constructing the pipeline. Includes sample image of cars/non-cars visualization, sample HOG feature detection and visualization, feature extraction, train classifier, finally detect cars on sample images and test video.
+2. utils.py - contains library functions for various operations like image visualization, HOG features extraction, heat map generation, etc. (mostly library functions provided in the course).
+3. project_output_video_test_full.mp4 - final video with cars detected.
+
 
 
 ###Histogram of Oriented Gradients (HOG)
