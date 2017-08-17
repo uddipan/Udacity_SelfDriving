@@ -63,7 +63,7 @@ I trained a linear SVM using the LinearSVC function from sklearn (cell 10 in det
 Given an image, I implemented sliding window search using the following steps (last few cells of jupyter.ipynb with appropriate headings):
 
 1. I extracted the region of interest where cars are most likely to be present. 
-2. I calculated the HOG features for the entire ROI 
+2. I calculated the HOG features for the entire ROI.
 3. I implemented a sliding window on the ROI to calculate histogram and spatial features. The HOG features calculated in step 2 were scaled to extract the HOG features for each window. I used YCbCr HOG features with (8x8) pixels per cell, (2x2) cells per block, 9 orientations and 75% overlap of adjacent windows (each window starts on a cell boundary).
 4. The window size was fixed to 64 but an additional scale was used to resize the image region of interest. A scale of 1.0 implies a search window of 64 pixels in the original image; higher scale factor implies bigger search window.
 
@@ -102,5 +102,5 @@ I tried various thresholds to weed out false positives. Increasing the threshold
 
 The pipeline will be challenged if we have vehicles other than cars (e.g. trucks) and also  at night where the typical brightness will be different than the trained images. In order to make it more robust we can add more data to the training set collected at various times of the day. 
 
-The pipeline will also likely fail if we have advertisement hoardings on the roadside with lots of color or even when the camera sees cars crossing the road perpendicularly (e.g. the car is near an intersection and cars cross near perpedicualar to it). In both cases more data might help.
+The pipeline will also likely fail if we have advertisement hoardings on the roadside with lots of color or even when the camera sees cars crossing the road perpendicularly (e.g. the car is near an intersection and cars cross near perpendicular to it). In both cases more data might help.
 
