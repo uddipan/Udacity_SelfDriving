@@ -1,6 +1,12 @@
 #include <math.h>       /* atan2 */
 #include "kalman_filter.h"
 
+#include <iostream>
+
+
+
+constexpr double kPI = 22.0/7.0;
+
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
@@ -55,12 +61,16 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
    */
   float t1 = sqrt(x_(0)*x_(0) + x_(1)*x_(1));
   float t2 = atan2(x_(1), x_(0));
-  t1 = fmax(t1, 0.0001);
-  float t3 = (x_(0)*x_(2) + x_(1)*x_(3))/t1;
   
+  t1 = fmax(t1, 0.000001);
+  float t3 = (x_(0)*x_(2) + x_(1)*x_(3))/t1;
+    
   VectorXd H_f(3);
   H_f << t1,t2,t3;
   VectorXd y = z - H_f;
+  
+  y(1) = RangeInPi(y(1));
+  
   MatrixXd Ht = H_.transpose();
   MatrixXd S = H_ * P_ * Ht + R_;
   MatrixXd Si = S.inverse();
@@ -73,3 +83,10 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   MatrixXd I = MatrixXd::Identity(x_size, x_size);
   P_ = (I - K * H_) * P_;
 }
+
+double KalmanFilter::RangeInPi(double x) {
+  if( x > kPI ) return x - 2*kPI;
+  if( x < -kPI) return x + 2*kPI;
+  return x;
+}
+

@@ -8,6 +8,8 @@ using Eigen::MatrixXd;
 using Eigen::VectorXd;
 using std::vector;
 
+double PI_ = atan(1)*4;
+
 /*
  * Constructor.
  */
@@ -77,7 +79,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
      * Remember: you'll need to convert radar from polar to cartesian coordinates.
      */
     // first measurement
-    cout << "EKF: " << endl;
+    //cout << "EKF: " << endl;
     ekf_.x_ = VectorXd(4);
     ekf_.x_ << 1, 1, 1, 1;
     
@@ -106,6 +108,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     is_initialized_ = true;
     return;
   }
+  
   
   /*****************************************************************************
    *  Prediction
@@ -156,11 +159,14 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   
   if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
     // Radar updates
+    Eigen::VectorXd z = measurement_pack.raw_measurements_;
+    z(1) = ekf_.RangeInPi(z(1));
+    
     Tools tools;
     Hj_ = tools.CalculateJacobian(ekf_.x_);
     ekf_.H_ = Hj_;
     ekf_.R_ = R_radar_;
-    ekf_.UpdateEKF(measurement_pack.raw_measurements_);
+    ekf_.UpdateEKF(z);
   } else {
     // Laser updates
     ekf_.H_ = H_laser_;
@@ -169,6 +175,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   }
   
   // print the output
-  //cout << "x_ = " << ekf_.x_ << endl;
-  //cout << "P_ = " << ekf_.P_ << endl;
+  cout << "x_ = " << ekf_.x_ << endl;
+  cout << "P_ = " << ekf_.P_ << endl;
 }

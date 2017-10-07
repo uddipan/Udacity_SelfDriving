@@ -63,6 +63,9 @@ public:
    * @param z The measurement at k+1
    */
   void UpdateEKF(const Eigen::VectorXd &z);
+  
+  // Puts the specified value in range [-Pi, Pi]
+  double RangeInPi(double x);
 
 };
 
